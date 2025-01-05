@@ -81,10 +81,10 @@ def main():
                 messagebox.showerror("Błąd", "Wszystkie pola oprócz email są wymagane.")
                 return
 
-            # Zaktualizowanie w bazie danych
+            # Update in DB
             update_contact_in_db(contact_id, new_first_name, new_last_name, new_phone_number, new_email)
 
-            # Zaktualizowanie w liście dwukierunkowej
+            # Update in the list
             current.first_name = new_first_name
             current.last_name = new_last_name
             current.phone_number = new_phone_number
@@ -94,7 +94,7 @@ def main():
             edit_window.destroy()
             messagebox.showinfo("Sukces", "Kontakt został zaktualizowany.")
 
-        # Okno edycji kontaktu
+        # Edit contact window
         edit_window = tk.Toplevel(root)
         edit_window.title("Edytuj kontakt")
 
@@ -126,7 +126,7 @@ def main():
             messagebox.showwarning("Uwaga", "Pole wyszukiwania jest puste.")
             return
 
-        tree.delete(*tree.get_children())  # Wyczyszczenie tabeli
+        tree.delete(*tree.get_children())  # Clear whole table
         current = contact_list.head
         while current:
             if (query in current.first_name.lower() or
