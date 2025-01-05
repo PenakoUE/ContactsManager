@@ -15,10 +15,11 @@ def main():
     frame = tk.Frame(root)
     frame.pack(pady=10)
 
+    ## TODO: Add sorting function on pressing specific heading
     tree = ttk.Treeview(frame, columns=("ID", "Imię", "Nazwisko", "Telefon", "Email"), show="headings")
     tree.heading("ID", text="ID")
-    tree.heading("Imię", text="Imię")
-    tree.heading("Nazwisko", text="Nazwisko")
+    tree.heading("Imię", text="Imię", command=lambda: print("TEST IMIE"))
+    tree.heading("Nazwisko", text="Nazwisko", command=lambda: print("TEST NAZIWSKO"))
     tree.heading("Telefon", text="Telefon")
     tree.heading("Email", text="Email")
     tree.pack(side=tk.LEFT)
@@ -28,6 +29,7 @@ def main():
     scrollbar.pack(side=tk.RIGHT, fill=tk.Y)
 
     # Window for adding new contact
+    # TODO: Set default window size
     def add_contact_window():
         add_window = tk.Toplevel(root)
         add_window.title("Dodaj kontakt")
@@ -126,6 +128,7 @@ def main():
             messagebox.showwarning("Uwaga", "Pole wyszukiwania jest puste.")
             return
 
+        ## TODO: Check if that block of code is search algorithm
         tree.delete(*tree.get_children())  # Clear whole table
         current = contact_list.head
         while current:
